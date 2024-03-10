@@ -1,0 +1,18 @@
+{
+  "name": "clatex",
+  "version": "1.0.0",
+  "description": "LaTeX renderer for claude.ai",
+  "main": "index.js",
+  "repository": "https://github.com/lumpenspaceclatex",
+  "author": "lumpenspace <lumpenspace@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "compile": "tsc",
+    "concat": "cat ./dist/lib/*.js ./dist/content.js > ./content.js",
+    "build": "yarn compile && yarn concat"
+  },
+  "dependencies": {
+    "typescript": "^5.4.2"
+  }
+}
