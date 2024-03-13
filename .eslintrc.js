@@ -23,6 +23,7 @@ module.exports = {
     },
     "rules": {
         "@typescript-eslint/semi": "off",
-        "@typescript-eslint/no-non-null-assertion": "off"
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/strict-boolean-expressions": "off",
     }
 }

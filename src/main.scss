@@ -11,6 +11,10 @@
     
   }
 
+.latex-source {
+    display: none;
+}
+
 .latex-container {
     display: flex;
     flex-direction: column;
@@ -22,7 +26,14 @@
     }
 }
 
+.latex-formula:hover .latex-copy-button {
+    display: block;
+    opacity: 1;
+}
+
+
 .latex-formula {
+    position: relative;
     background-color: hsl(var(--bg-200));
     display: inline-block;
     padding: 0.0625rem 0.0625rem;
