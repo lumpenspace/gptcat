@@ -1,33 +1,36 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "outDir": "./dist",
-    "module": "AMD",
-    "target": "es6",
-    "allowJs": true,
-    "checkJs": false,
-    "declaration": false,
-    "sourceMap": true,
-    "removeComments": true,
-    "noImplicitAny": false,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictBindCallApply": true,
-    "strictPropertyInitialization": false,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "baseUrl": "./",
-    "paths": {
-      "*": ["content.ts", "lib/*"]
-    },
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+      "strict": true,
+      "outDir": "./dist",
+      "target": "ES6",
+      "allowJs": true,
+      "checkJs": false,
+      "declaration": false,
+      "jsx": "react",
+      "sourceMap": true,
+      "removeComments": true,
+      "noImplicitAny": false,
+      "strictNullChecks": true,
+      "strictFunctionTypes": true,
+      "strictBindCallApply": true,
+      "strictPropertyInitialization": false,
+      "noImplicitThis": true,
+      "alwaysStrict": true,
+      "noUnusedLocals": false,
+      "noUnusedParameters": false,
+      "noImplicitReturns": true,
+      "moduleResolution": "node",
+      "noFallthroughCasesInSwitch": true,
+      "baseUrl": "./",
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true
   },
-  "include": ["content.ts"],
-  "exclude": ["node_modules"]
+  "include": ["src/main.tsx", "src/**/*.ts", "src/**/*.tsx"],
+  "linterOptions": {
+      "exclude": [
+          "node_modules/**",
+          "dist/**"
+      ]
+  }
 }

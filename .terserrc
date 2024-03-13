@@ -1,0 +1,6 @@
+{
+ "ecma": 6,
+ "output": {
+   "ascii_only": true
+  }
+}

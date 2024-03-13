@@ -1,0 +1,43 @@
+.latex-formula.block {
+    display: block;
+    text-align: center;
+    width: auto;
+    margin: 1rem auto; /* Add margin for spacing */
+  }
+.latex-formula.inline-block {
+
+    display: inline-block;
+    margin: 0.2rem; /* Add margin for spacing */
+    
+  }
+
+.latex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem 0;
+    .latex-formula {
+        margin: 0.5rem 0;
+    }
+}
+
+.latex-formula {
+    background-color: hsl(var(--bg-200));
+    display: inline-block;
+    padding: 0.0625rem 0.0625rem;
+    color: hsl(var(--accent-secondary-000));
+    border-radius: 0.3rem;
+    font-size: 0.95em;
+    @extend .shadow !optional;
+    .error {
+        color: hsl(var(--error-500));
+    }
+    .original-latex {
+        display: none;
+    }
+}
+
+.katex-html {
+    display: none;
+}

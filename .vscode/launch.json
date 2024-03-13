@@ -1,0 +1,18 @@
+{
+  "configurations": [
+    {
+      "name": "Launch Chrome",
+      "request": "launch",
+      "type": "chrome",
+      "url": "https://claude.ai/chat/f2a1a31b-8bec-4424-8783-13daaf94d7aa",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "name": "Attach to Chrome",
+      "request": "attach",
+      "type": "chrome",
+      "url": "https://claude.ai/chat/f2a1a31b-8bec-4424-8783-13daaf94d7aa",
+      "webRoot": "https://claude.ai/"
+    }
+  ]
+}
