@@ -2,15 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import LatexContainer from './LatexContainer';
 
-const hash = (str: string): number => {
-  let hash = 0;
-  for (let i = 0, len = str.length; i < len; i++) {
-    const chr = str.charCodeAt(i);
-    hash = (hash << 5) - hash + chr;
-    hash |= 0;
-  }
-  return hash;
-}
+import './main.scss';
 
 const latexRegex = /<lx>([\s\S]*?)<\/lx>/gs;
 
@@ -25,18 +17,6 @@ const textNodesUnder = (el: Node): Node[] => {
   return children
 }
 
-const isMatchDisplayMode = (match: string): boolean => {
-  const cleanMatch = match.replace(latexRegex, '$1').trim();
-  const startSequences = ['\\display', '\\begin'];
-  for (const seq of startSequences) {
-    if (cleanMatch.startsWith(seq)) return true;
-  }
-  return (
-    startSequences.some(seq => cleanMatch.startsWith(seq)) ||
-    (cleanMatch.startsWith('\\[') && cleanMatch.split('\n').length > 1)
-  )
-};
-
 const processNode = (node: Node): void => {
   node.normalize();
   const textContent = node.textContent!;
@@ -47,9 +27,7 @@ const processNode = (node: Node): void => {
     const reactRoot = createRoot(node.parentElement);
 
     reactRoot.render(
-      matches.length === 1 && isMatchDisplayMode(matches[0])
-        ? <LatexContainer content={textContent} />
-        : <LatexContainer content={textContent} />
+      <LatexContainer content={textContent} />
     );
   }
 };
@@ -71,7 +49,6 @@ const newContentObserver = new MutationObserver((mutations: MutationRecord[]): v
   console.log('interestingDivs', interestingDivs);
   newContentDivs.forEach(x => {
     // hash the content and set it as the id
-    x.id = `latex-${hash(x.textContent!)}`;
     textNodesUnder(x).forEach(processNode);
   })
 });

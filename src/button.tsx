@@ -5,7 +5,7 @@ const donePath = 'M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-2
 
 const Icon: React.FC<{ done: boolean }> = ({ done }) => (
   <svg
-    className="copy-icon absolute left-0"
+    className="latex-copy-icon"
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
     height="1em"
@@ -16,18 +16,15 @@ const Icon: React.FC<{ done: boolean }> = ({ done }) => (
   </svg>
 );
 
-const Button: React.FC<{ done: boolean }> = ({ done }) => (
-  <div className="flex items-center bg-bg-000 border-0.5 border-border-300 shadow-sm rounded-lg  transition opacity-0 scale-95 group-hover:scale-100 group-hover:opacity-100">
-    <div class="flex items-center bg-bg-000 border-0.5 border-border-300 shadow-sm rounded-lg  transition opacity-0 scale-95 group-hover:scale-100 group-hover:opacity-100">
+interface ButtonProps {
+  done: boolean
+  onClick: () => void
+}
 
-          <button class="flex flex-row gap-1 items-center hover:bg-bg-200 rounded-md transition-opacity delay-100 text-xs">
-            <div class="relative padding-left-4 bg-bg-100 rounded-md">
-              <Icon done={done} />
-            </div>
-            Copy
-          </button>
-    </div>
-  </div>
+const Button: React.FC<ButtonProps> = ({ done, onClick }) => (
+  <button title="copy" type="button" className="latex-copy-button" onClick={onClick}>
+        <Icon done={done} />
+  </button>
 )
 
 export default Button;

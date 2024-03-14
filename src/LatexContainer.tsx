@@ -1,15 +1,15 @@
 import React from 'react';
 import KatexFormula from './KatexFormula';
-import Button from './button';
 
 interface ComponentPart {
   type: 'text' | 'formula'
   value: string
+  display?: boolean
 };
+const latexRegex = /<lx>([\s\S]*?)<\/lx>/gs;
 
 // Utility function to parse content and identify formulas
 const parseContent = (content): ComponentPart[] => {
-  const latexRegex = /<lx>([\s\S]*?)<\/lx>/g;
   const matches = content.match(latexRegex);
   const parts: ComponentPart[] = [];
   let lastIndex = 0;
@@ -19,7 +19,9 @@ const parseContent = (content): ComponentPart[] => {
       const index = content.indexOf(match);
       const text = content.slice(lastIndex, index);
       if (text) parts.push({ type: 'text', value: text });
-      parts.push({ type: 'formula', value: match.replace(latexRegex, '$1') });
+      const formula = match.replace(latexRegex, '$1')
+      const display = isMatchDisplayMode(formula as string);
+      parts.push({ type: 'formula', value: formula, display });
       lastIndex = index + match.length;
     });
   }
@@ -28,27 +30,35 @@ const parseContent = (content): ComponentPart[] => {
   return parts;
 };
 
+const isMatchDisplayMode = (formula: string): boolean => {
+  const startSequences = ['\\display', '\\begin'];
+  for (const seq of startSequences) {
+    if (formula.startsWith(seq)) return true;
+  }
+  return (
+    startSequences.some(seq => formula.startsWith(seq)) ||
+    (formula.startsWith('\\[') && formula.split('\n').length > 1)
+  )
+};
+
 const LatexContainer: React.FC<{ content: string }> = ({ content }) => {
   const parts = parseContent(content);
   return (
-    <>
-      {content}
+    <div>
       {parts.map((part, index) => {
         switch (part.type) {
           case 'text':
             return <span key={index}>{part.value}</span>;
           case 'formula':
+            console.log('formula', part);
             return (
-              <span key={index} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <KatexFormula formula={part.value} />
-                <Button done={false} /> {/* Assuming `done` state needs to be managed */}
-              </span>
+              <KatexFormula key={index} formula={part.value} isDisplay={part.display} />
             );
           default:
             return null;
         }
       })}
-    </>
+    </div>
   );
 };
 
