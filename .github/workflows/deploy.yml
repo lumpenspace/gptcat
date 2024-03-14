@@ -31,6 +31,7 @@ jobs:
       with:
         name: package
         path: package.zip
+      id: upload-artifact
 
     - name: Get Artifact URL
       run: "echo \"Artifact URL: ${{ steps.upload-artifact.outputs.artifact_url }}\""

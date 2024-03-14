@@ -4,8 +4,16 @@ Little chrome extension to render `Lᴬ𝜯𝛦χ` on (claude.ai)[http://claude.
 
 ## Installation
 
-1. Download the latest version of the app from the [latest release](#latest-release);
-2. Unzip the downloaded file and add it to your chrome extensions unpacked.
+1. `git clone git@github.com:lumpenspace/xlaude.git`
+2. `npm install -g yarn`
+3. `yarn install`
+4. `yarn build`
+5. Open `chrome://extensions/` in your browser
+6. Enable `Developer mode`
+7. Click `Load unpacked`
+8. Select this directory
+9. Open the claude.ai website
+10. Enjoy the rendered math
 
 ## Usage
 
