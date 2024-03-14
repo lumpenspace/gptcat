@@ -1,36 +1,18 @@
-# my-katex-app
+# 𝝌𝐿ɑuΔ𝜠
 
-This is a KaTeX app that allows you to render formulas on webpages.
+Little chrome extension to render `Lᴬ𝜯𝛦χ` on (claude.ai)[http://claude.ai].
 
 ## Installation
 
-To install the app, follow these steps:
-
-1. Clone the repository: `git clone https://github.com/your-username/my-katex-app.git`
-2. Navigate to the project directory: `cd my-katex-app`
-3. Install the dependencies: `npm install`
+1. Download the latest version of the app from the [latest release](#latest-release);
+2. Unzip the downloaded file and add it to your chrome extensions unpacked.
 
 ## Usage
 
-To use the app, follow these steps:
+1. Open the claude.ai website;
+2. Tell claude that he can  now render maths, by including Lᴬ𝜯𝛦χ code into `<lx>tags</lx>` (he prefers XML);
+3. Enjoy the rendered math
 
-1. Build the app: `npm run build`
-2. Start the app: `npm start`
-3. Open a webpage in your browser.
-4. The body of the webpage will be replaced with a rendered formula.
+## Latest Release
 
-## Configuration
-
-The app can be configured in the `src/index.ts` file. You can modify the `startApp` function to customize the app's behavior.
-
-## Fonts
-
-The necessary fonts required by KaTeX should be placed in the `src/fonts` directory. Make sure to include all the required font files.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
-
-Please note that the `src/contentScript.ts` file is intentionally left blank. You need to add the necessary code to swap the body with a rendered formula in the `swapBodyWithRenderedFormula` function.
-
-For more information on how to use KaTeX, refer to the [KaTeX documentation](https://katex.org/docs/node).
+Download the latest version of the app from the [latest release](https://github.com/your-username/my-katex-app/releases/latest).

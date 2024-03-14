@@ -46,7 +46,6 @@ const newContentObserver = new MutationObserver((mutations: MutationRecord[]): v
 
   if (interestingDivs.length === 0) return;
 
-  console.log('interestingDivs', interestingDivs);
   newContentDivs.forEach(x => {
     // hash the content and set it as the id
     textNodesUnder(x).forEach(processNode);

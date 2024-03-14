@@ -50,7 +50,6 @@ const LatexContainer: React.FC<{ content: string }> = ({ content }) => {
           case 'text':
             return <span key={index}>{part.value}</span>;
           case 'formula':
-            console.log('formula', part);
             return (
               <KatexFormula key={index} formula={part.value} isDisplay={part.display} />
             );

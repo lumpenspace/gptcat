@@ -1,0 +1,48 @@
+name: Build and Package
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-package:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14'
+    - name: Install dependencies
+      run: yarn install
+    - name: Build project
+      run: yarn build
+    - name: Package into zip
+      run: zip -r package.zip dist manifest.json
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: package
+        path: package.zip
+    # Placeholder for README.md update step
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./package.zip
+        asset_name: package.zip
+        asset_content_type: application/zip
