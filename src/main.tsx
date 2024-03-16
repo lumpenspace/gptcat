@@ -1,55 +1,58 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import LatexContainer from './LatexContainer';
+import componentDict from './tags';
 
 import './main.scss';
 
-const latexRegex = /<lx>([\s\S]*?)<\/lx>/gs;
+const getNewElements = (mutations: MutationRecord[]): Element[] =>
+  mutations.map((mutation, i) =>
+    Array.from(mutation.addedNodes)
+      .filter(node => node instanceof Element).flat()).flat() as Element[];
 
-const textNodesUnder = (el: Node): Node[] => {
-  const children: Node[] = [];
-  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT)
-  walker.currentNode = el;
+const extractContentDivs = (elements: Element[]): Element[] =>
+  elements.map(node =>
+    node.classList.contains('contents')
+      ? [node]
+      : Array.from(node.querySelectorAll('.contents')).flat()
+  ).flat().flat();
 
-  while (walker.nextNode() !== null) {
-    children.push(walker.currentNode)
+const renderRoot = (element: Element): void => {
+  const tag = element.getAttribute('data-tag');
+  if (tag !== null) {
+    const Component = componentDict[tag];
+    const content = element.getAttribute('data-content')!.trim();
+    if (content === '') {
+      element.innerHTML = `<${tag}></${tag}>`;
+    }
+    createRoot(element, {}).render(<Component>{content}</Component>);
   }
-  return children
 }
 
-const processNode = (node: Node): void => {
-  node.normalize();
-  const textContent = node.textContent!;
-  const matches = textContent.match(latexRegex);
-
-  if (matches !== null) {
-    node.textContent = '';
-    const reactRoot = createRoot(node.parentElement);
-
-    reactRoot.render(
-      <LatexContainer content={textContent} />
-    );
-  }
-};
-
 const newContentObserver = new MutationObserver((mutations: MutationRecord[]): void => {
-  const newContentDivs = mutations.map(({ addedNodes }) =>
-    [...addedNodes].filter(
-      node => node.nodeType === Node.ELEMENT_NODE && (node as Element).tagName === 'DIV'
-    ).map(node => {
-      node.normalize();
-      if ((node as Element).classList.contains('contents')) return [node as Element];
-      return [...(node as Element).querySelectorAll('div.contents')]
-    }).flat()).flat();
+  const newElements = getNewElements(mutations);
+  const newContentDivs = extractContentDivs(newElements);
 
-  const interestingDivs = newContentDivs.filter(node => node.textContent?.match(latexRegex));
+  newContentDivs.forEach(div => {
+    const regex = /&lt;([/]?[a-zA-Z0-9]+)&gt;/g;
+    const content = div.innerHTML.replace(regex, '<$1>');
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(`<div>${content}</div>`, 'text/html');
 
-  if (interestingDivs.length === 0) return;
-
-  newContentDivs.forEach(x => {
-    // hash the content and set it as the id
-    textNodesUnder(x).forEach(processNode);
-  })
+    Array.from(doc.querySelectorAll('*')).forEach((element: Element) => {
+      if (element.tagName.toLowerCase() in componentDict) {
+        const newElement = document.createElement('div');
+        newElement.setAttribute('data-tag', element.tagName.toLowerCase());
+        newElement.classList.add('xlaude--component');
+        newElement.setAttribute('data-content', element.textContent!);
+        element.replaceWith(newElement);
+      }
+    });
+    div.innerHTML = doc.body.innerHTML;
+    const elements = div.querySelectorAll('.xlaude--component');
+    for (const element of elements) {
+      renderRoot(element);
+    };
+  });
 });
 
 const observeNewContent = (): void => {
