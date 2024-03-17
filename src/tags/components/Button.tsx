@@ -22,7 +22,7 @@ interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = ({ done, onClick }) => (
-  <button title="copy" type="button" className="latex-copy-button" onClick={onClick}>
+  <button title="copy" type="button" className="xlaude--copy-button" onClick={onClick}>
         <Icon done={done} />
   </button>
 )
