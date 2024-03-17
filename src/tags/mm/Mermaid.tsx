@@ -1,44 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import CustomTag from '../components/CustomTag';
+import React, { type PropsWithChildren, useEffect, useState } from 'react';
+import TagContainer, { type Tag } from '../TagContainer';
 import mermaidAPI from 'mermaid/dist/mermaid'
+import mermaidConfig from './mermaidConfig';
 
-interface MermaidProps {
-  chart: string
-}
-
-mermaidAPI.initialize({
-  startOnLoad: false,
-  securityLevel: 'loose',
-  theme: 'default',
-  flowchart: {
-    htmlLabels: true,
-    curve: 'asis'
-  },
-  xyChart: {
-    width: 400,
-    height: 400
-  },
-  gantt: {
-    titleTopMargin: 25
-  },
-  sequence: {
-    actorMargin: 50
-  },
-  journey: {
-
-  },
-  quadrantChart: {
-  },
-  mindmap: {
-  },
-  sankey: {
-  },
-  er: {
-  },
-  gitGraph: {
-  }
-
-});
+mermaidAPI.initialize(mermaidConfig);
 
 const legalStarts = ['graph', 'sequenceDiagram', 'gantt', 'classDiagram', 'gitGraph', 'journey', 'stateDiagram', 'entityRelationship', 'userJourney', 'pie', 'er', 'requirementDiagram', 'flowchart', 'info', 'git'];
 
@@ -47,18 +12,19 @@ const isLegalStart = (chart: string): boolean => {
   return legalStarts.some((start) => trimmed.startsWith(start));
 }
 
-const Mermaid: React.FC<MermaidProps> = ({ chart }) => {
+const Mermaid: Tag<PropsWithChildren> = ({ children: chart }) => {
   const [renderedChart, setRenderedChart] = useState<string>('');
   const [error, setError] = useState<Error | null>(null);
 
+  console.log({ chart })
   useEffect(() => {
     if (!chart || error) return;
     (async () => {
-      chart = chart.replace(/\\n/g, '\n')
+      chart = (chart as string).replace(/\\n/g, '\n')
 
       // if the trimmed chart does not start with --- or with a graph name, return
 
-      if (!isLegalStart(chart)) {
+      if (typeof chart !== 'string' || !isLegalStart(chart)) {
         return;
       }
 
@@ -78,15 +44,25 @@ const Mermaid: React.FC<MermaidProps> = ({ chart }) => {
   }, [chart, error]);
 
   return (
-    <CustomTag display={!!renderedChart} title="Mermaid diagram" copyContent={chart}>
+    <TagContainer display={!!renderedChart} title="Mermaid diagram" copyContent={chart as string}>
       {
         error
           ? <div>{ error.message }</div>
           : renderedChart
-            ? <div dangerouslySetInnerHTML={{ __html: renderedChart }} />
-            : <>{`<mm>${chart}</mm>`}</>
+            ? <div style={{ width: '100%' }} dangerouslySetInnerHTML={{ __html: renderedChart }} />
+            : <>{`<mm>${chart as string}</mm>`}</>
       }
-    </CustomTag>);
+    </TagContainer>);
 }
+
+Mermaid.displayName = 'Mermaid';
+Mermaid.example = `graph TD
+A[Christmas] -->|Get money| B(Go shopping)
+B --> C{Let me think}
+C -->|One| D[Laptop]
+C -->|Two| E[iPhone]
+C -->|Three| F[fa:fa-car Car]`;
+Mermaid.description = 'Renders a mermaid diagram.';
+Mermaid.tag = 'mm';
 
 export default Mermaid;

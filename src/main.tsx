@@ -1,4 +1,4 @@
-import renderCustomTags from './tags';
+import { renderCustomTags } from './tags';
 import './main.scss';
 
 const getNewElements = (mutations: MutationRecord[]): Element[] =>

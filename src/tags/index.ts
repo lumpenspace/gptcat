@@ -1,3 +1,4 @@
 import renderCustomTags from './renderCustomTags';
-
-export default renderCustomTags;
+import CustomTag, { type Tag } from './TagContainer';
+import './tags';
+export { renderCustomTags, CustomTag, type Tag };

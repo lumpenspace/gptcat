@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Button from './Button'
+import Button from '../components/Button'
 import type { FC, PropsWithChildren } from 'react';
-import './CustomTag.scss';
+import './TagContainer.scss';
 
 interface Props extends PropsWithChildren {
   display: boolean
@@ -33,5 +33,13 @@ const CustomTag: FC<Props> = ({ display, title, copyContent, children }) => {
     </div>
   );
 };
+
+interface Tag<Props> extends FC<Props> {
+  tag: string
+  description: string
+  example: string
+}
+
+export type { Tag };
 
 export default CustomTag;

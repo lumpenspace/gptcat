@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, type PropsWithChildren } from 'react';
 import 'katex/dist/katex.min.css';
-import './LatexFormula.scss';
-import CustomTag from '../components/CustomTag';
+
+import CustomTag, { type Tag } from '../TagContainer';
 
 import isDisplayMode from './isDisplayMode';
 import renderKatex from './renderKatex';
+import './LatexFormula.scss';
 
-interface LatexFormulaProps {
-  formula: string
-}
-
-const LatexFormula: React.FC<LatexFormulaProps> = ({ formula }) => {
+const LatexFormula: Tag<PropsWithChildren> = ({ children }) => {
+  const formula = children as string;
   const [isDisplay] = useState<boolean>(isDisplayMode(formula));
   const [renderedFormula, setRenderedFormula] = useState<DangerHtml>({ __html: '' });
 
@@ -26,5 +24,8 @@ const LatexFormula: React.FC<LatexFormulaProps> = ({ formula }) => {
   );
 };
 
+LatexFormula.tag = 'lx';
+LatexFormula.description = 'Renders a LaTeX.';
+LatexFormula.example = '\\frac{1}{2}';
+
 export default LatexFormula;
-export type { LatexFormulaProps };
