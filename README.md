@@ -1,6 +1,6 @@
 # GPTCat
 
-Little extension to render `Lᴬ𝜯𝛦χ` and `mermaid` on (claude.ai)[http://claude.ai].
+Little extension to render `Lᴬ𝜯𝛦χ` and `mermaid` on [claude.ai](http://claude.ai).
 
 ## Installation
 
