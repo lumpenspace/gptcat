@@ -1,0 +1,44 @@
+.button-container {
+  display: inline-block;
+  margin-right: 1.5rem;
+  opacity: 0;
+  .visible & {
+    opacity: 1;
+  }
+  .button-label {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &.primary {
+      background-color: var(--bg-200);
+      color: #fff;
+
+      &:hover {
+        background-color: var(--bg-300);
+      }
+    }
+
+    &.secondary {
+      background-color: var(--accent-main-200);
+      color: #333;
+
+      &:hover {
+        background-color: #e0e0e0;
+      }
+    }
+
+    &:focus {
+      outline: 2px solid #4a90e2;
+    }
+
+    .button-text {
+      font-size: 1rem;
+    }
+  }
+}

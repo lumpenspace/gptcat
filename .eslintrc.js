@@ -4,6 +4,10 @@ module.exports = {
         "es2021": true
     },
     "extends": "standard-with-typescript",
+    "ignorePatterns": [
+        "dist/",
+        "node_modules/"
+    ],
     "overrides": [
         {
             "env": {
@@ -24,6 +28,7 @@ module.exports = {
     "rules": {
         "@typescript-eslint/semi": "off",
         "@typescript-eslint/no-non-null-assertion": "off",
+        
         "@typescript-eslint/strict-boolean-expressions": "off",
     }
 }

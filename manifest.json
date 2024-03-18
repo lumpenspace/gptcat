@@ -2,7 +2,6 @@
   "manifest_version": 3,
   "name": "gptcat",
   "version": "1.0",
-  "id": "gptcat",
   "description": "Renders LaTeX formulas and mermaid diagrams on claude.ai",
   "permissions": ["activeTab"],
   "browser_specific_settings": {
@@ -12,13 +11,18 @@
 
     }
   },
+  "host_permissions": ["*://*.claude.ai/*", "*://claude.ai/*", "*://*.claude.ai/chat/*", "*://claude.ai/chat/*"],
+  "action": {
+    "default_popup": "./pageAction/index.html",
+    "default_title": "Whereami?"
+  },
   "content_scripts": [
     {
       "matches": ["*://*.claude.ai/*", "*://claude.ai/*", "*://*.claude.ai/chat/*", "*://claude.ai/chat/*"],
       "match_about_blank": true,
       "run_at" : "document_idle",
-      "js": ["./src/main.tsx"],
-      "css": ["./src/main.scss"],
+      "js": ["./dist/content.js"],
+      "css": ["./dist/content.css"],
       "all_frames": true
     }
   ]

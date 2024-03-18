@@ -1,5 +1,5 @@
 import { type MermaidConfig } from 'mermaid';
-import { style } from '../../clients/claude/claude';
+import { style } from '../../../src/clients/claude/claude';
 
 const settings: MermaidConfig = {
   startOnLoad: false,

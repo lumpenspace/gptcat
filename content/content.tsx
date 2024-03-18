@@ -1,5 +1,6 @@
-import { renderCustomTags } from './tags';
-import './main.scss';
+import { renderCustomTags } from './tags/index';
+import { fieldObserver } from './inputUI';
+import './content.scss';
 
 const getNewElements = (mutations: MutationRecord[]): Element[] =>
   mutations.map((mutation, i) =>
@@ -13,6 +14,10 @@ const newContentObserver = new MutationObserver((mutations: MutationRecord[]): v
 const observeNewContent = (): void => {
   if (document !== null) {
     newContentObserver.observe(document, {
+      childList: true,
+      subtree: true
+    });
+    fieldObserver.observe(document, {
       childList: true,
       subtree: true
     });

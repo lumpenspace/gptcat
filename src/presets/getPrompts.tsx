@@ -1,5 +1,5 @@
-import type { TagMeta } from '../tags';
-import { tagsList } from '../tags';
+import type { TagMeta } from '../../content/tags';
+import { tagsList } from '../../content/tags';
 
 const getTagPrompts = (includedTags: string[]): string => `\
   <special-tags>

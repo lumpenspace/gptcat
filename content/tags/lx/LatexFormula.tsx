@@ -1,6 +1,7 @@
 import React, { useState, useEffect, type PropsWithChildren } from 'react';
 
-import CustomTag, { type Tag } from '../TagContainer';
+import CustomTag from '../TagContainer';
+import { type Tag } from '../../../src/Tag';
 
 import isDisplayMode from './isDisplayMode';
 import renderKatex from './renderKatex';

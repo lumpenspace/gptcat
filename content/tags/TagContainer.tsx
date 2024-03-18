@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Button from '../components/CopyButton'
+import Button from './CopyButton'
 import type { FC, PropsWithChildren } from 'react';
 import './TagContainer.scss';
 
@@ -34,19 +34,5 @@ const CustomTag: FC<Props> = ({ display, title, copyContent, children, tagName }
     </div>
   );
 };
-
-interface TagMeta {
-  tag: string
-  displayName: string
-  description: string
-  example: string
-}
-
-interface Tag<Props> extends TagMeta {
-
-  (props: Props): JSX.Element
-}
-
-export { type Tag, type TagMeta };
 
 export default CustomTag;

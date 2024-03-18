@@ -7,8 +7,8 @@
     "sign": "dotenv -e .env.local web-ext sign --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET",
     "package": "web-ext build",
     "release": "yarn build && yarn sign && yarn package",
-    "build": "parcel build src/main.tsx --dist-dir=./dist",
-    "watch": "parcel watch src/main.tsx  --dist-dir=./dist"
+    "build": "parcel build content/content.tsx browserAction/script.ts --dist-dir=./dist",
+    "watch": "parcel watch content/content.tsx  --dist-dir=./dist"
   },
   "dependencies": {
     "@types/react": "^18.2.66",

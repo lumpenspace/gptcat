@@ -1,5 +1,6 @@
 import React, { type PropsWithChildren, useEffect, useState } from 'react';
-import TagContainer, { type Tag } from '../TagContainer';
+import TagContainer from '../TagContainer';
+import { type Tag } from '../../../src/Tag';
 import mermaidAPI from 'mermaid/dist/mermaid'
 import mermaidConfig from './mermaidConfig';
 import './Mermaid.scss'
@@ -17,7 +18,6 @@ const Mermaid: Tag<PropsWithChildren> = ({ children: chart }) => {
   const [renderedChart, setRenderedChart] = useState<string>('');
   const [error, setError] = useState<Error | null>(null);
 
-  console.log({ chart })
   useEffect(() => {
     if (!chart || error) return;
     (async () => {
@@ -29,7 +29,6 @@ const Mermaid: Tag<PropsWithChildren> = ({ children: chart }) => {
         return;
       }
 
-      console.log({ chart })
       if (!chart) return;
       const id = `mermaid-${chart.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
       try {

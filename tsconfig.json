@@ -21,12 +21,12 @@
       "noImplicitReturns": true,
       "moduleResolution": "node",
       "noFallthroughCasesInSwitch": true,
-      "baseUrl": "./src",
+      "baseUrl": "content",
       "esModuleInterop": true,
       "skipLibCheck": true,
       "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/main_old.tsx", "src/**/*.ts", "src/**/*.tsx", "src/components"],
+  "include": ["./content/**/*.tsx","./content/**/*.ts", "./src/**/*.tsx", "./src/**/*.d.tsx", "pageAction/**/*.tsx", "src/**/*.ts"],
   "exclude": ["node_modules", "dist"],
   "linterOptions": {
       "exclude": [
