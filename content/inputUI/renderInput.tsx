@@ -3,12 +3,12 @@ import render from '../render';
 import Button from '../components/Button';
 
 const renderInputs = (): void => {
-  const input = document.createElement('div');
-  input.classList.add('gptcat--input');
-  render(input, <Button icon="📋" label="Copy" color="primary" onClick={() => {}} />);
   const fieldset = document.querySelector('fieldset.relative');
+  console.log(fieldset);
   if (fieldset) {
-    fieldset.appendChild(input);
+    const inputDiv = fieldset.querySelector('.grid')!.appendChild(document.createElement('div'));
+    inputDiv.classList.add('gptcat--input');
+    render(inputDiv, <Button iconName="markup" label="Copy" color="primary" onClick={() => {}} />);
   }
 };
 
