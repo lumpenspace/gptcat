@@ -42,7 +42,7 @@ const renderCustomTags = (newElements: Element[]): void => {
         console.log('element', element);
         const newElement = document.createElement('div');
         newElement.setAttribute('data-tag', element.tagName.toLocaleLowerCase());
-        newElement.classList.add('xlaude--component');
+        newElement.classList.add('gptcat--component');
         newElement.setAttribute('data-content', element.textContent!);
         console.log('newElement', newElement);
         element.replaceWith(newElement);
@@ -51,8 +51,7 @@ const renderCustomTags = (newElements: Element[]): void => {
       }
     });
     div.innerHTML = doc.body.innerHTML;
-    const elements = div.querySelectorAll('.xlaude--component');
-    console.log('elements', elements);
+    const elements = div.querySelectorAll('.gptcat--component');
     for (const element of elements) {
       renderRoot(element);
     };

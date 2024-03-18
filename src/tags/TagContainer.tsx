@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Button from '../components/Button'
+import Button from '../components/CopyButton'
 import type { FC, PropsWithChildren } from 'react';
 import './TagContainer.scss';
 
@@ -7,9 +7,10 @@ interface Props extends PropsWithChildren {
   display: boolean
   title: string
   copyContent: string
+  tagName: string
 }
 
-const CustomTag: FC<Props> = ({ display, title, copyContent, children }) => {
+const CustomTag: FC<Props> = ({ display, title, copyContent, children, tagName }) => {
   const [isCopied, setIsCopied] = useState<boolean>(false);
 
   const handleCopy = (): void => {
@@ -27,19 +28,25 @@ const CustomTag: FC<Props> = ({ display, title, copyContent, children }) => {
   };
 
   return (
-    <div className={`xlaude--custom-tag ${display ? 'block' : 'inline-block'}`} title={title}>
+    <div className={`gptcat--custom-tag ${display ? 'block' : 'inline-block'} gptcat--${tagName}`} title={title}>
       {children}
       <Button done={isCopied} onClick={handleCopy} />
     </div>
   );
 };
 
-interface Tag<Props> extends FC<Props> {
+interface TagMeta {
   tag: string
+  displayName: string
   description: string
   example: string
 }
 
-export type { Tag };
+interface Tag<Props> extends TagMeta {
+
+  (props: Props): JSX.Element
+}
+
+export type { Tag, TagMeta };
 
 export default CustomTag;

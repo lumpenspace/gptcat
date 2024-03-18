@@ -1,9 +1,4 @@
 import React, { useState, useEffect, type PropsWithChildren } from 'react';
-<<<<<<< HEAD
-import './katex.css';
-=======
-import 'katex/dist/katex.min.css';
->>>>>>> 6cdddfa1e5176ee2d02fc654b9183314c95483d0
 
 import CustomTag, { type Tag } from '../TagContainer';
 
@@ -22,14 +17,15 @@ const LatexFormula: Tag<PropsWithChildren> = ({ children }) => {
   }, [formula, isDisplay]);
 
   return (
-    <CustomTag display={isDisplay} title={formula} copyContent={formula}>
-      <div className="xlaude--latex-formula" dangerouslySetInnerHTML={renderedFormula} />
+    <CustomTag tagName='lx' display={isDisplay} title={formula} copyContent={formula}>
+      <div className="gptcat--latex-formula" dangerouslySetInnerHTML={renderedFormula} />
     </CustomTag>
   );
 };
 
+LatexFormula.displayName = 'LatexFormula';
 LatexFormula.tag = 'lx';
-LatexFormula.description = 'Renders a LaTeX.';
+LatexFormula.description = 'Renders a LaTeX formula.';
 LatexFormula.example = '\\frac{1}{2}';
 
 export default LatexFormula;

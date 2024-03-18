@@ -1,4 +1,4 @@
-.xlaude--custom-tag {
+.gptcat--custom-tag {
   position: relative;
   display: inline-block;
   border-radius: 0.3rem;
@@ -22,6 +22,9 @@
       align-items: center;
       justify-content: center;
       padding: 1rem;
+      .gptcat--copy-button label {
+          display: block;
+      }
   }
 
   @extend .shadow !optional;
@@ -30,33 +33,8 @@
   }
 
   &:hover {
-      .xlaude--copy-button {
-          opacity: 1;
-      }
-  }
-  
-  .xlaude--copy-button {
-      .latex-copy-icon {
-          display: inline-block;
-      }
-      padding: 0.3rem;
-      border-radius: 0.25rem;
-      border: 1px solid hsl(var(--bg-400));
-      opacity: 0;
-      display: flex;
-      flex-direction: row;
-      font-size: .75rem;;
-      border-radius: 0.5rem;
-      border: 1px solid hsl(var(--bg-400));
-      background-color: hsl(var(--bg-000));
-      font-family: var(--font-styrene-a);
-      position: absolute;
-      color: buttontext;
-      top: -0.5rem;
-      right: -0.5rem;
-      cursor: pointer;
-      svg {
-          display: block;
+      .gptcat--copy-button {
+          opacity: 100;
       }
   }
 }

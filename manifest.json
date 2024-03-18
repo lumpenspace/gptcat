@@ -7,7 +7,9 @@
   "permissions": ["activeTab"],
   "browser_specific_settings": {
     "gecko": {
-      "update_url": "https://github.com/lumpenspace/GPTcat/raw/main/updates.json"
+      "update_url": "https://github.com/lumpenspace/GPTcat/raw/main/updates.json",
+      "id": "gptcat@lumpenspace"
+      
     }
   },
   "content_scripts": [

@@ -2,6 +2,7 @@ import React, { type PropsWithChildren, useEffect, useState } from 'react';
 import TagContainer, { type Tag } from '../TagContainer';
 import mermaidAPI from 'mermaid/dist/mermaid'
 import mermaidConfig from './mermaidConfig';
+import './Mermaid.scss'
 
 mermaidAPI.initialize(mermaidConfig);
 
@@ -44,12 +45,12 @@ const Mermaid: Tag<PropsWithChildren> = ({ children: chart }) => {
   }, [chart, error]);
 
   return (
-    <TagContainer display={!!renderedChart} title="Mermaid diagram" copyContent={chart as string}>
+    <TagContainer tagName="mm" display={!!renderedChart} title="Mermaid diagram" copyContent={chart as string}>
       {
         error
           ? <div>{ error.message }</div>
           : renderedChart
-            ? <div style={{ width: '100%' }} dangerouslySetInnerHTML={{ __html: renderedChart }} />
+            ? <div className="gptcat--mm-mermaid-container" dangerouslySetInnerHTML={{ __html: renderedChart }} />
             : <>{`<mm>${chart as string}</mm>`}</>
       }
     </TagContainer>);

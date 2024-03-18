@@ -2,23 +2,18 @@
   "name": "gpt-cat",
   "version": "1.0.0",
   "description": "Multi-purpose Claude.ai extensionm adding support for LaTeX and Mermaid diagrams",
+  
   "scripts": {
-    "copy-manifest": "cp manifest.json dist/manifest.json",
-    "copy-icons": "cp -r icons dist/icons",
-    "copy-all": "yarn copy-manifest && yarn copy-icons",
-    "sign": "dotenv -e .env.local  web-ext sign --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET --source-dir=dist",
-    "package": "web-ext build --source-dir=dist",
-    "release": "yarn build && yarn copy-all && yarn sign && yarn package",
+    "sign": "dotenv -e .env.local web-ext sign --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET",
+    "package": "web-ext build",
+    "release": "yarn build && yarn sign && yarn package",
     "build": "parcel build src/main.tsx --dist-dir=./dist",
     "watch": "parcel watch src/main.tsx  --dist-dir=./dist"
   },
   "dependencies": {
     "@types/react": "^18.2.66",
-<<<<<<< HEAD
     "dotenv": "^16.4.5",
     "dotenv-cli": "^7.4.1",
-=======
->>>>>>> 6cdddfa1e5176ee2d02fc654b9183314c95483d0
     "mermaid": "^10.9.0"
   },
   "license": "MIT",

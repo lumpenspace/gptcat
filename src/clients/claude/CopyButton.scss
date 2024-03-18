@@ -1,0 +1,35 @@
+button.gptcat--copy-button {
+  .latex-copy-icon {
+      display: inline-block;
+  }
+  label {
+      margin-left: 0.5rem;
+      cursor: pointer;
+  }
+  svg {
+      display: block;
+      cursor: pointer;
+  }
+  padding: 0.3rem;
+  border-radius: 0.25rem;
+  border: 1px solid hsl(var(--bg-400));
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  flex-direction: row;
+  font-size: .75rem;;
+  border-radius: 0.5rem;
+  border: 1px solid hsl(var(--bg-400));
+  background-color: hsl(var(--bg-000));
+  font-family: var(--font-styrene-a);
+  position: absolute;
+  color: buttontext;
+  top: -0.5rem;
+  right: -0.5rem;
+  cursor: pointer;
+  svg {
+      display: block;
+      cursor: pointer;
+  }
+}

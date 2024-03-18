@@ -4,7 +4,7 @@ Little extension to render `Lᴬ𝜯𝛦χ` and `mermaid` on [claude.ai](http://
 
 ## Installation
 
-1. `git clone git@github.com:lumpenspace/xlaude.git`
+1. `git clone git@github.com:lumpenspace/gptcat.git`
 2. `npm install -g yarn`
 3. `yarn install`
 4. `yarn build`

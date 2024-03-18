@@ -1,0 +1,17 @@
+.gptcat--mm {
+  color: hsl(var(--accent-secondary-000));
+  width: 100%;
+
+  &-mermaid-container {
+    width: '100%';
+    display: contents;
+  }
+
+  .mermaid-source {
+      display: none;
+  }
+
+  .original-mermaid {
+      display: none;
+  }
+}
