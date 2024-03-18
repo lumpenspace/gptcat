@@ -1,5 +1,9 @@
 import React, { useState, useEffect, type PropsWithChildren } from 'react';
+<<<<<<< HEAD
 import './katex.css';
+=======
+import 'katex/dist/katex.min.css';
+>>>>>>> 6cdddfa1e5176ee2d02fc654b9183314c95483d0
 
 import CustomTag, { type Tag } from '../TagContainer';
 

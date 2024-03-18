@@ -14,8 +14,11 @@
   },
   "dependencies": {
     "@types/react": "^18.2.66",
+<<<<<<< HEAD
     "dotenv": "^16.4.5",
     "dotenv-cli": "^7.4.1",
+=======
+>>>>>>> 6cdddfa1e5176ee2d02fc654b9183314c95483d0
     "mermaid": "^10.9.0"
   },
   "license": "MIT",
