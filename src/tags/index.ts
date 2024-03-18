@@ -1,8 +1,4 @@
-import { type FC } from 'react';
-import * as lx from './lx';
-
-const dictionary: Record<string, FC<any>> = {
-  [lx.name]: lx.component
-};
-
-export default dictionary;
+import renderCustomTags from './renderCustomTags';
+import CustomTag, { type Tag } from './TagContainer';
+import './tags';
+export { renderCustomTags, CustomTag, type Tag };

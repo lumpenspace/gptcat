@@ -1,9 +1,15 @@
 {
   "manifest_version": 3,
-  "name": "xlod",
+  "name": "gptcat",
   "version": "1.0",
-  "description": "Renders LaTeX formulas for claude.ai",
+  "id": "gptcat",
+  "description": "Renders LaTeX formulas and mermaid diagrams on claude.ai",
   "permissions": ["activeTab"],
+  "browser_specific_settings": {
+    "gecko": {
+      "update_url": "https://github.com/lumpenspace/GPTcat/raw/main/updates.json"
+    }
+  },
   "content_scripts": [
     {
       "matches": ["*://*.claude.ai/*", "*://claude.ai/*", "*://*.claude.ai/chat/*", "*://claude.ai/chat/*"],

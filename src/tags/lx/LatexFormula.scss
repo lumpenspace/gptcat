@@ -1,9 +1,5 @@
-.latex-formula {
-  position: relative;
-  display: inline-block;
+.xlaude--latex-formula {
   color: hsl(var(--accent-secondary-000));
-  border-radius: 0.3rem;
-  font-size: 0.95em;
 
   .mathml-container {
       display: none;
@@ -13,60 +9,7 @@
       display: none;
   }
 
-  &.inline-block {
-      display: inline-block;
-      padding: 0.1rem 0;
-      // border on top and bottom
-      border-bottom: 1px solid hsl(var(--bg-400));
-  }
-
-  
-  &.block {
-      width: 100%;
-      background-color: hsl(var(--bg-200));
-      display: block;
-      margin: 0.5rem 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-  }
-
-  @extend .shadow !optional;
-  .error {
-      color: hsl(var(--error-500));
-  }
   .original-latex {
       display: none;
-  }
-  &:hover {
-      .latex-copy-button {
-          opacity: 1;
-      }
-  }
-  .latex-copy-button {
-      .latex-copy-icon {
-          display: inline-block;
-      }
-      padding: 0.3rem;
-      border-radius: 0.25rem;
-      border: 1px solid hsl(var(--bg-400));
-      opacity: 0;
-      display: flex;
-      flex-direction: row;
-      font-size: .75rem;;
-      border-radius: 0.5rem;
-      border: 1px solid hsl(var(--bg-400));
-      background-color: hsl(var(--bg-000));
-      font-family: var(--font-styrene-a);
-      position: absolute;
-      color: buttontext;
-      top: -0.5rem;
-      right: -0.5rem;
-      cursor: pointer;
-      svg {
-          display: block;
-      }
   }
 }

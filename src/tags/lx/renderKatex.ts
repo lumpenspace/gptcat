@@ -1,5 +1,4 @@
 import katex from 'katex';
-import 'katex/dist/katex.min.css';
 
 const renderKaTeX = (formula: string, isDisplay: boolean): DangerHtml => {
   const container = document.createElement('div');

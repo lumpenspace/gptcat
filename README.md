@@ -1,6 +1,6 @@
-# 𝝌𝐿ɑuΔ𝜠
+# GPTCat
 
-Little chrome extension to render `Lᴬ𝜯𝛦χ` on (claude.ai)[http://claude.ai].
+Little extension to render `Lᴬ𝜯𝛦χ` and `mermaid` on (claude.ai)[http://claude.ai].
 
 ## Installation
 
@@ -24,3 +24,12 @@ Little chrome extension to render `Lᴬ𝜯𝛦χ` on (claude.ai)[http://claude.
 ## Latest Release
 
 Download the latest version of the app from the [latest release](https://github.com/lumpenspace/claudex/latest).
+
+```mermaid
+graph TD;
+    A[Start] --> B{Is it?};
+    B -->|Yes| C[OK];
+    C --> D[Rethink];
+    D --> B;
+    B ---->|No| E[End];
+```
