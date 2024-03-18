@@ -21,12 +21,13 @@
       "noImplicitReturns": true,
       "moduleResolution": "node",
       "noFallthroughCasesInSwitch": true,
-      "baseUrl": "./",
+      "baseUrl": "./src",
       "esModuleInterop": true,
       "skipLibCheck": true,
       "forceConsistentCasingInFileNames": true
   },
   "include": ["src/main_old.tsx", "src/**/*.ts", "src/**/*.tsx", "src/components"],
+  "exclude": ["node_modules", "dist"],
   "linterOptions": {
       "exclude": [
           "node_modules/**",

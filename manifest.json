@@ -9,7 +9,7 @@
     "gecko": {
       "update_url": "https://github.com/lumpenspace/GPTcat/raw/main/updates.json",
       "id": "gptcat@lumpenspace"
-      
+
     }
   },
   "content_scripts": [
@@ -17,8 +17,8 @@
       "matches": ["*://*.claude.ai/*", "*://claude.ai/*", "*://*.claude.ai/chat/*", "*://claude.ai/chat/*"],
       "match_about_blank": true,
       "run_at" : "document_idle",
-      "js": ["./dist/main.js"],
-      "css": ["./dist/main.css"],
+      "js": ["./src/main.tsx"],
+      "css": ["./src/main.scss"],
       "all_frames": true
     }
   ]

@@ -2,7 +2,7 @@
   "name": "gpt-cat",
   "version": "1.0.0",
   "description": "Multi-purpose Claude.ai extensionm adding support for LaTeX and Mermaid diagrams",
-  
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "sign": "dotenv -e .env.local web-ext sign --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET",
     "package": "web-ext build",
@@ -18,6 +18,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@parcel/config-webextension": "^2.12.0",
     "@parcel/transformer-sass": "2.12.0",
     "@types/katex": "^0.16.7",
     "@typescript-eslint/eslint-plugin": "^6.4.0",

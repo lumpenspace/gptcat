@@ -47,6 +47,6 @@ interface Tag<Props> extends TagMeta {
   (props: Props): JSX.Element
 }
 
-export type { Tag, TagMeta };
+export { type Tag, type TagMeta };
 
 export default CustomTag;
